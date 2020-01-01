@@ -38,3 +38,37 @@ body {
   position: absolute;
   bottom: 40px;
 }
+@media only screen and (min-width: 768px) {
+  #main {
+    display: grid;
+    grid-template-columns: 50% 50%;
+  }
+  .product {
+    background-size: cover;
+    height: 0;
+    margin: 1vw;
+    padding-top: 100%;
+    width: auto;
+  }
+  .product-hdr {
+    top: 0;
+    position: absolute;
+    width: 100%;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  #main {
+    grid-template-columns: 50% 50%;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  #main {
+    grid-template-columns: 33% 33% 33%;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  #main {
+    margin: 0 auto;
+    width: 1200px;
+  }
+}
