@@ -81,3 +81,24 @@ body {
     width: 1200px;
   }
 }
+
+#overlay {
+  background-color: rgba(0,0,0,0.66);
+  height: 100%;
+  left: 0;
+  top: 0;
+  width: 100%;
+  position: fixed;
+}
+.overlay-modal {
+  background-color: #999;
+  height: 90vw;
+  left: 50%;
+  margin-right: -50%;
+  width: 90vw;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 450px;
+  max-height: 450px;
+}
