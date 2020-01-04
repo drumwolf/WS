@@ -19,7 +19,7 @@ class ProductPage {
       this.editProductData(productData);
       finalHTML += renderProduct(productData);
     });
-    document.getElementById('main').innerHTML += finalHTML;
+    document.getElementById('product-container').innerHTML += finalHTML;
   }
 
   editProductData(product) {

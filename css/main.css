@@ -55,7 +55,7 @@ button {
   bottom: 40px;
 }
 @media only screen and (min-width: 480px) and (max-width: 767px) {
-  #main {
+  #product-container {
     margin: 0 auto;
     width: 480px;
   }
@@ -66,7 +66,7 @@ button {
   }
 }
 @media only screen and (min-width: 768px) {
-  #main {
+  #product-container {
     display: grid;
     grid-template-columns: 50% 50%;
   }
@@ -79,17 +79,17 @@ button {
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
-  #main {
+  #product-container {
     grid-template-columns: 50% 50%;
   }
 }
 @media only screen and (min-width: 1024px) {
-  #main {
+  #product-container {
     grid-template-columns: 33% 33% 33%;
   }
 }
 @media only screen and (min-width: 1200px) {
-  #main {
+  #product-container {
     margin: 0 auto;
     width: 1200px;
   }
