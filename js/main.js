@@ -2,10 +2,10 @@ class Overlay {
   constructor() {
     // dom elements
     this.overlay  = document.getElementById('overlay');
-    this.modal    = this.overlay.querySelector('.overlay-modal');
-    this.closeBtn = this.overlay.querySelector('.overlay-close-btn');
-    this.leftBtn  = this.overlay.querySelector('.overlay-carousel-left-btn');
-    this.rightBtn = this.overlay.querySelector('.overlay-carousel-right-btn');
+    this.modal    = this.overlay.querySelector('.ol-modal');
+    this.closeBtn = this.overlay.querySelector('.ol-close-btn');
+    this.leftBtn  = this.overlay.querySelector('.ol-prev-btn');
+    this.rightBtn = this.overlay.querySelector('.ol-next-btn');
     // state properties
     this.products = [];
     this.selectedProductIndex = 0;
