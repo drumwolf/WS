@@ -143,6 +143,9 @@ button {
   border: solid 1px #FFF;
   border-radius: 50%;
 }
+.ol-carousel-indicator-dot.active {
+  background-color: #FFF;
+}
 .ol-close-btn {
   border: 0;
   background-color: transparent;
