@@ -1,3 +1,6 @@
+import Handlebars from 'handlebars';
+import './index.css';
+
 class Overlay {
   constructor() {
     // dom elements
@@ -65,7 +68,7 @@ class ProductPage {
   }
 
   fetchJSON() {
-    const url = '/js/data.json';
+    const url = 'data.json';
     fetch(url).then( resp => resp.json() ).then( data => {
       this.buildPage(data.groups);
       this.fillOverlay(data.groups);
