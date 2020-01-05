@@ -4,8 +4,8 @@ class Overlay {
     this.overlay  = document.getElementById('overlay');
     this.modal    = this.overlay.querySelector('.ol-modal');
     this.closeBtn = this.overlay.querySelector('.ol-close-btn');
-    this.leftBtn  = this.overlay.querySelector('.ol-prev-btn');
-    this.rightBtn = this.overlay.querySelector('.ol-next-btn');
+    this.prevBtn  = this.overlay.querySelector('.ol-prev-btn');
+    this.nextBtn  = this.overlay.querySelector('.ol-next-btn');
     // state properties
     this.products = [];
     this.selectedProductIndex = 0;
@@ -17,8 +17,8 @@ class Overlay {
     // close modal
     this.closeBtn.addEventListener('click', e => this.hide());
     // click arrows
-    this.leftBtn.addEventListener('click',  e => this.showPrev() );
-    this.rightBtn.addEventListener('click', e => this.showNext() );
+    this.prevBtn.addEventListener('click', e => this.showPrev() );
+    this.nextBtn.addEventListener('click', e => this.showNext() );
   }
 
   fill(products) {
