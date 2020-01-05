@@ -1,15 +1,83 @@
+class Overlay {
+  constructor() {
+    // dom elements
+    this.overlay  = document.getElementById('overlay');
+    this.modal    = this.overlay.querySelector('.overlay-modal');
+    this.closeBtn = this.overlay.querySelector('.overlay-close-btn');
+    this.leftBtn  = this.overlay.querySelector('.overlay-carousel-left-btn');
+    this.rightBtn = this.overlay.querySelector('.overlay-carousel-right-btn');
+    // state properties
+    this.products = [];
+    this.selectedProductIndex = 0;
+    // attach events to dom elements
+    this.attachEvents();
+  }
+
+  attachEvents() {
+    // close modal
+    this.closeBtn.addEventListener('click', e => this.hide());
+    // click arrows
+    this.leftBtn.addEventListener('click',  e => this.showPrev() );
+    this.rightBtn.addEventListener('click', e => this.showNext() );
+  }
+
+  fill(products) {
+    this.products = products;
+  }
+
+  hide() {
+    this.overlay.style.display = 'none';
+  }
+
+  show(index) {
+    this.selectedProductIndex = index;
+    this.overlay.style.display = 'block';
+    this.modal.style.backgroundImage = `url(${this.products[index].thumbnail.href})`;
+  }
+
+  showPrev() {
+    this.showNext(-1);
+  }
+
+  showNext(increment = 1) {
+    const len = this.products.length;
+    const index = this.selectedProductIndex;
+    const newIndex = ( index + increment + len) % len;
+    this.show(newIndex);
+  }
+}
+
 class ProductPage {
   constructor() {
     // define variables
+    this.overlay = new Overlay();
     this.products = [];
+    this.productContainer = document.getElementById('product-container');
     // fetch JSON data
-    const url = '/js/data.json';
-    fetch(url).then( resp => resp.json() ).then( data => this.buildPage(data) );
+    this.fetchJSON();
   }
 
-  buildPage(data) {
+  fetchJSON() {
+    const url = '/js/data.json';
+    fetch(url).then( resp => resp.json() ).then( data => {
+      this.buildPage(data.groups);
+      this.fillOverlay(data.groups);
+      this.attachEvents();
+    });
+  }
+
+  attachEvents() {
+    this.productContainer.addEventListener('click', e => {
+      if (e.target.classList.contains('product')) {
+        const index = Array.prototype.indexOf.call(this.productContainer.children, e.target);
+        this.showOverlay(index);
+      }
+    });
+  }
+
+  buildPage(products) {
     // store product data
-    this.products = data.groups;
+    this.products = products;
     // parse individual data properties
     const productTemplate = document.getElementById('product-template');
     const renderProduct = Handlebars.compile(productTemplate.innerHTML);
@@ -19,7 +87,7 @@ class ProductPage {
       this.editProductData(productData);
       finalHTML += renderProduct(productData);
     });
-    document.getElementById('product-container').innerHTML += finalHTML;
+    this.productContainer.innerHTML += finalHTML;
   }
 
   editProductData(product) {
@@ -30,6 +98,14 @@ class ProductPage {
     // edit 'product' JSON object
     product.name = parser.parseFromString(product.name,'text/html').body.textContent;
     product.price = '$' + price.toFixed(2);
+  }
+
+  fillOverlay(index) {
+    this.overlay.fill(index);
+  }
+
+  showOverlay(index) {
+    this.overlay.show(index);
   }
 
 }
