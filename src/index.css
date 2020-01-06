@@ -143,7 +143,16 @@ button {
   border: solid 1px #FFF;
   border-radius: 50%;
 }
-.ol-carousel-indicator-dot.active {
+[data-selected-index="0"] .indicator-0,
+[data-selected-index="1"] .indicator-1,
+[data-selected-index="2"] .indicator-2,
+[data-selected-index="3"] .indicator-3,
+[data-selected-index="4"] .indicator-4,
+[data-selected-index="5"] .indicator-5,
+[data-selected-index="6"] .indicator-6,
+[data-selected-index="7"] .indicator-7,
+[data-selected-index="8"] .indicator-8,
+[data-selected-index="9"] .indicator-9 {
   background-color: #FFF;
 }
 .ol-close-btn {

@@ -9,7 +9,7 @@ class Overlay {
     this.closeBtn = this.overlay.querySelector('.ol-close-btn');
     this.prevBtn  = this.overlay.querySelector('.ol-prev-btn');
     this.nextBtn  = this.overlay.querySelector('.ol-next-btn');
-    this.indicators = this.overlay.querySelectorAll('.ol-carousel-indicator-dot');
+    this.indicators = this.overlay.querySelector('.ol-carousel-indicators');
     // state properties
     this.products = [];
     this.selectedProductIndex = 0;
@@ -27,15 +27,21 @@ class Overlay {
 
   fill(products) {
     this.products = products;
+    this.setIndicators();
   }
 
   hide() {
     this.overlay.style.display = 'none';
   }
 
+  setIndicators() {
+    let html = '';
+    this.products.forEach( (obj, index) => { html += `<li class="ol-carousel-indicator-dot indicator-${index}"></li>`; });
+    this.indicators.innerHTML = html;
+  }
+
   selectIndicator(index) {
-    this.indicators.forEach( obj => obj.classList.remove('active') );
-    this.indicators[index].classList.add('active');
+    this.indicators.setAttribute('data-selected-index', index);
   }
 
   show(index) {
